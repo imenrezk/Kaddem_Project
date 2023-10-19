@@ -1,0 +1,41 @@
+<div [ngStyle]="{ width: '300px' }">
+  <form #CAForm="ngForm" (ngSubmit)="onSubmit(CAForm)">
+    <div class="form-group">
+      dateDebut:
+      <input
+        type="date"
+        class="form-control"
+        required
+        name="dateDebut"
+        [(ngModel)]="startDate"
+        #dateDebut="ngModel"
+      />
+      <span class="text-danger" *ngIf="dateDebut.errors?.['required']"
+        >*required</span
+      >
+    </div>
+    <div class="form-group">
+      dateFin:
+      <input
+        type="date"
+        class="form-control"
+        name="dateFin"
+        required
+        [(ngModel)]="endDate"
+        [min]="startDate"
+        #dateFin="ngModel"
+      />
+      <span class="text-danger" *ngIf="dateFin.errors?.['required']"
+        >*required</span
+      >
+      <span class="text-danger" *ngIf="dateFin.errors?.['min']"
+        >*dateFin>{{ startDate }}</span
+      >
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="CAForm.invalid">
+      Submit
+    </button>
+  </form>
+  <p [hidden]="!isSubmitted" [ngClass]="'green'">CA = {{ CA }}</p>
+</div>

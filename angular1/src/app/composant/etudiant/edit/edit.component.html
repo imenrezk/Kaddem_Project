@@ -1,0 +1,52 @@
+<br>
+<br>
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Modifier Etudiant</h3>
+      </div>
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <label for="">Prenom:</label>
+          <td><input [(ngModel)]="etudiant.prenomE" name="prenomE" type="text" required  minlength="3" pattern="[a-zA-Z]*" class="form-control" #pre="ngModel">
+            <div [hidden]="pre.valid"> 
+              Prenom obligatoire
+             et il doit contenir au moins 3 caractéres
+          </div></td>
+          </div>
+
+          <div class="form-group">
+            <label for="">Nom:</label>
+         <td> <input [(ngModel)]="etudiant.nomE" name="nomE" type="text" required  minlength="3" pattern="[a-zA-Z]*"  class="form-control" #nom="ngModel">
+            <div [hidden]="nom.valid"> 
+              Nom obligatoire
+             et il doit contenir au moins 3 caractéres
+          </div></td>
+          </div>
+          <div class="form-group">
+            <label for="">Option:</label>
+          <td> <select pattern="Customer" [(ngModel)]="etudiant.option" #opt="ngModel" name="option" type="text" class="form-control" id="option">
+                <option value="">--Please choose an option--</option>
+                <option value="Gamix">Gamix</option>
+                <option value="SE">SE</option>
+                <option value="SIM">SIM</option>
+                <option value="NIDS">NIDS</option>
+            </select>
+            <div *ngIf="opt.valid">
+              Il faut choisir l'option de l'etudiant
+           </div></td> 
+          </div>
+          <div class="form-group">
+            <label for="">Nom Departement:</label>
+         <td>  <input [(ngModel)]="etudiant.departement.idDepart" #dep="ngModel" name="idDepart"   required type="text" class="form-control">
+            <div *ngIf="dep.invalid">
+              le departement n'existe pas 
+           </div></td> 
+          </div>
+      
+          <button (click)="Actualizar(etudiant)" class="btn btn-danger">Modifier</button>
+        </form>
+      </div>
+    </div>
+  </div>

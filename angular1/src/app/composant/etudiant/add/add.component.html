@@ -1,0 +1,57 @@
+<br>
+<br>
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Ajouter un etudiant</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="">Prenom Etudiant</label>    
+            <div class=" col-sm-3 "><input type="text" class="form-control" Name="prenomE"
+                                           [(ngModel)]="etudiant.prenomE"></div>
+        
+            <div *ngIf="prenomE.invalid && prenomE.touched" style="color: rgba(4, 0, 0, 0.396);">
+              * Prenom de l Etudiant est obligatoire et<br/>
+              * il doit contenir au moins 2 caractéres
+             
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="">Nom Etudiant</label>    
+              <div class=" col-sm-3 "><input type="text" class="form-control" formControlName="nomE"
+                [(ngModel)]="etudiant.nomE"></div>
+          
+              <div *ngIf="nomE.invalid && nomE.touched" style="color: rgba(143, 35, 35, 0.396);">
+               * Nom Etudiant est obligatoire et<br/>
+               * il doit contenir au moins 3 caractéres
+              </div> 
+            </div>
+              <div class="form-group">
+                <label for="">Option</label>    
+            <select [(ngModel)]="etudiant.option"  formControlName="option" type="text" class="form-control" id="option">
+                     <option value="">--Please choose an option--</option>
+                     <option value="Gamix">Gamix</option>
+                     <option value="SE">SE</option>
+                     <option value="SIM">SIM</option>
+                     <option value="NIDS">NIDS</option>
+            </select>
+            <div class="alert alert-danger" role="alert" *ngIf="option.invalid">
+              option obligatoire
+          </div>
+            </div>
+            <div class="form-group">
+              <label for="">Nom Departement:</label>    
+                <div class=" col-sm-3 "><input type="text"  class="form-control" formControlName="idDepart"
+                 [(ngModel)]="etudiant.departement.idDepart"></div>
+            </div>
+        
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Ajouter</button>
+              </div>
+    
+        </form>
+      </div>
+    </div>
+  </div>

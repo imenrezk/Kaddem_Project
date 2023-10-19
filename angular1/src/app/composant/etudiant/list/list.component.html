@@ -1,0 +1,67 @@
+<br>
+<div class="container text-center">
+<div class="input-group rounded">
+  <form #f="ngForm">
+  <input  type="search" (keyup)="rechercher(f.value.idDepart)" ngModel placeholder="Search" type="text" name="idDepart" id="idDepart" class="form-control">
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</form>
+</div>
+</div>
+<br>
+<div class="container text-center">
+  <button [ngStyle]="{'font-size.px':20,'font-style':'Comic Sans'}" class="btn btn-info"(click)="Listar()" >ListEtudiant</button>
+  <button [ngStyle]="{'font-size.px':20,'font-style':'Comic Sans'}"class="btn btn-info" (click)="Nuevo()"   style="margin-left: 20px;">AjouterEtudiant</button> 
+  <br>
+  <br>
+</div>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Etudiants</h3>  
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <button [ngClass]="{'btn-blod':true, 'btn-italic':false,'font-size.px':20}" class="btn btn-warning" (click)="tri()" style="margin-left: 20px;">TriEtudiant</button> 
+        <thead>
+          <tr class="text-center">
+            <th>idEtudiant</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>option</th>
+            <th>NomDepartement</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let etudiant of etudiants |paginate:{
+            itemsPerPage: tableSize,
+            currentPage: page,
+             totalItems : count }; let i=index" class="text-center">
+            <td>{{etudiant.idEtudiant}}</td>
+            <td>{{etudiant.prenomE}}</td>
+            <td>{{etudiant.nomE}}</td>
+           
+            <td>{{etudiant.option}}</td>
+            <td>{{etudiant.departement.nomDepartement}}</td>
+            <td>
+              <button (click)="Editar(etudiant)" class="btn btn-warning">Edit</button>
+              <button (click)="Delete(etudiant)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+   
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange ($event)" ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>

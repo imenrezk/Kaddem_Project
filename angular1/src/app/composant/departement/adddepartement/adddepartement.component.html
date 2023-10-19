@@ -1,0 +1,49 @@
+<br>
+<br>
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Ajouter un etudiant</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="">Nom Departement</label>    
+            <div class=" col-sm-3 "><input type="text" class="form-control" formControlName="nomDepartement"
+                                           [(ngModel)]="departement.nomDepartement"></div>
+        
+            <div *ngIf="nomDepartement.invalid && nomDepartement.touched" style="color: rgb(96, 61, 61);">
+              *nom du département est obligatoire  et <br/>
+              *il doit contenir au moins 1 caractéres
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="">Nombre Employe</label>    
+              <div class=" col-sm-3 "><input type="text" class="form-control" formControlName="nbrEmployes"
+                                             [(ngModel)]="departement.nbrEmployes"></div>
+                                             
+          
+     <!--  <div *ngIf="nbrEmployes.errors">
+                <div class="alert alert-danger" role="alert" *ngIf="nbrEmployes.errors?.['required']">
+                    nom du département obligatoire 
+                 </div>
+          
+                 <div class="alert alert-danger" role="alert" *ngIf="nbrEmployes.errors?.['pattern']">
+                    Il ne faut que des chiffres 
+                       </div>
+                       </div>
+
+   -->
+             <div *ngIf="nbrEmployes.invalid && nbrEmployes.touched" style="color:rgb(96, 61, 61);">
+               *Nombre employes est obligatoire et<br/>
+               *il doit contenir que des chiffres
+              </div> 
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Ajouter</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

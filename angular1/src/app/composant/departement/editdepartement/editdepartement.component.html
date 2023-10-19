@@ -1,0 +1,31 @@
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Modifier Departement</h3>
+      </div>
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <label for="">NomDepart:</label>
+            <td> <input [(ngModel)]="departement.nomDepartement" name="nomDepartement" type="text" required  minlength="1" pattern="[a-zA-Z]*" type="text" class="form-control" #nomdep="ngModel">
+            <div [hidden]="nomdep.valid"> 
+                nom Departement obligatoire
+             et il doit contenir au moins 1 caractéres
+           
+            </div></td>
+        </div>
+          <div class="form-group">
+            <label for="">Nombre Departement:</label>
+          <td>  <input [(ngModel)]="departement.nbrEmployes" name="nbrEmployes" pattern="^[0-9]*" required type="text" class="form-control" #nbr="ngModel">
+            <div [hidden]="nbr.valid"> 
+                Nombre Departement obligatoire
+             et il doit contenir que des chiffres
+            </div></td>
+        </div>
+
+          <button (click)="Actualizar(departement)" class="btn btn-danger">Modifier</button>
+        </form>
+      </div>
+    </div>
+  </div>
+

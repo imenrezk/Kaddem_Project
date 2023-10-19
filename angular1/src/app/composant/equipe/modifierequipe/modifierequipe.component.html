@@ -1,0 +1,50 @@
+<br>
+<br>
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Modifier Equipe</h3>
+      </div>
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <label for="">NomEquipe:</label>
+            <td><input [(ngModel)]="equipe.nomEquipe" name="nomEquipe" type="text" required  minlength="3" pattern="[a-zA-Z]*" class="form-control" #pre="ngModel">
+            <div [hidden]="pre.valid"> 
+                nomEquipe obligatoire
+             et il doit contenir au moins 3 caractéres
+          </div></td>
+          </div>
+          <div class="form-group">
+            <label for="">Niveau:</label>
+          <td> <select pattern="Customer" [(ngModel)]="equipe.niveau" #n="ngModel" name="niveau" type="text" class="form-control" id="niveau">
+            <option value="">--SVP Selectionner un niveau--</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+            <option value="Expert">Expert</option>
+            </select>
+            <div *ngIf="n.valid">
+              Il faut choisir l'niveau de l'etudiant
+           </div></td> 
+          </div>
+          <div class="form-group">
+            <label for="">nbmax:</label>
+         <td>  <input [(ngModel)]="equipe.nbmax" #nbm="ngModel" name="nbmax"   required pattern="^[0-9]*" type="text" class="form-control">
+            <div *ngIf="nbm.invalid">
+              le departement n'existe pas 
+           </div></td> 
+          </div>
+          <div class="form-group">
+            <label for="">Mail:</label>
+          <td><input [(ngModel)]="equipe.mail" name="mail" type="text" required  pattern="^[a-zA-Z0-9]+@gmail.com" class="form-control" #mail="ngModel">
+            <div [hidden]="mail.valid"> 
+                nomEquipe obligatoire
+            et mail
+          </div></td>
+          </div>
+          <button (click)="Actualizar(equipe)" class="btn btn-danger">Modifier</button>
+        </form>
+      </div>
+    </div>
+  </div>
+

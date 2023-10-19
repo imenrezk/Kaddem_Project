@@ -1,0 +1,28 @@
+<p>
+    <mat-toolbar color="primary">
+      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <span> Notre Application KADDEM</span>
+      <img width="60" src="assets/img/logo.png"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <span class="spacer"></span>
+      <button mat-icon-button routerLink="/"> 
+      </button>
+      <span class="spacer"></span>
+      <button mat-button routerLink="etudiant/list">Etudiant</button>
+      <button mat-button routerLink="equipe/listequipe">Equipe</button>
+      <button mat-button routerLink="auth/signup">Detail_equipe</button>
+      <button mat-button routerLink="universite/Listuniversite">universite</button>
+      <button mat-button routerLink="departement/listdepartement">Departement</button>
+      <button mat-button routerLink="contrat">Contrat</button>
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button> -->
+    </mat-toolbar>
+  </p>
+  <router-outlet></router-outlet>
+

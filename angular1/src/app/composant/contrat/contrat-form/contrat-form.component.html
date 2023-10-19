@@ -1,0 +1,69 @@
+<div style="width: 300px">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <!-- must import ReactiveFormsModule-->
+    <div class="form-group">
+      <label>dateDebut</label>
+      <input
+        type="date"
+        formControlName="dateDebut"
+        class="form-control"
+        [(ngModel)]="contract.dateDebut"
+      />
+      <span class="text-danger" *ngIf="controls['dateDebut'].errors"
+        >*required</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label>dateFin</label>
+      <input
+        type="date"
+        [min]="contract.dateDebut"
+        formControlName="dateFin"
+        class="form-control"
+        [(ngModel)]="contract.dateFin"
+      />
+      <span class="text-danger" *ngIf="controls['dateFin'].errors"
+        >*required</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Specialite</label>
+      <select
+        formControlName="specialite"
+        class="form-control"
+        [(ngModel)]="contract.specialite"
+      >
+        <option value="IA">IA 300DT</option>
+        <option value="RESEAUX">RESEAUX 350DT</option>
+        <option value="CLOUD">CLOUD 400DT</option>
+        <option value="SECURITE">SECURITE 450DT</option>
+      </select>
+      <span class="text-danger" *ngIf="controls['specialite'].errors"
+        >*required</span
+      >
+    </div>
+
+    <div class="form-group">
+      <input
+        type="checkbox"
+        value="true"
+        formControlName="archive"
+        [(ngModel)]="contract.archive"
+      />
+      <label>Archivé</label>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="myForm.invalid || !myForm.touched"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+{{ contract.id }}
+{{ contract.dateDebut }}
